@@ -1,0 +1,38 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">Example</h1>
+<hr>
+<a href="" class="btn btn-secondary btn-xs">Add</a>
+<br>
+<br>
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">Your column</th>
+            <th scope="col" style="text-align: center;">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for thing in things %}
+            <tr>
+                <th scope="row" style="text-align: center;">{{thing.another_thing}}</th>
+                <td style="text-align: center;">{{thing.another_thing1}}</td>
+                <td style="text-align: center;">{{thing.another_thing2}}</td>
+                <td style="text-align: center;">{{thing.another_thing3}}</td>
+                <td style="text-align: center;">{{thing.another_thing4}}</td>
+                <td style="text-align: center;">{{thing.another_thing5}}</td>
+                <td style="text-align: center;">
+                    <a href="" class="btn btn-secondary btn-xs">Edit</a>
+                    <a href="" onclick="return confirm('Do you really want to delete this thing?')" class="btn btn-danger btn-xs">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
