@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -17,6 +17,22 @@ class Your_Table(db.Model):
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html', things=Your_Table.query.all())
+
+
+@app.route('/add_thing', methods=["GET", "POST"])
+def add_thing():
+    thing = request.form.get('thing')
+
+    if request.method == "POST":
+        if not thing:
+            flash("Please, fill out all fields")
+        else:
+            variable = Your_Table(thing)
+            db.session.add(variable)
+            db.session.commit()
+            return redirect(url_for('dashboard'))
+    
+    return render_template('add_thing.html')
 
 
 if __name__ == "__main__":

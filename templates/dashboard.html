@@ -3,7 +3,7 @@
 {% block content %}
 <h1 style="text-align: center;">Example</h1>
 <hr>
-<a href="" class="btn btn-secondary btn-xs">Add</a>
+<a href="{{url_for('add_thing')}}" class="btn btn-secondary btn-xs">Add</a>
 <br>
 <br>
 <table class="table table-striped table-hover">
@@ -21,7 +21,7 @@
     <tbody>
         {% for thing in things %}
             <tr>
-                <th scope="row" style="text-align: center;">{{thing.another_thing}}</th>
+                <th scope="row" style="text-align: center;">{{thing.your_column}}</th>
                 <td style="text-align: center;">{{thing.another_thing1}}</td>
                 <td style="text-align: center;">{{thing.another_thing2}}</td>
                 <td style="text-align: center;">{{thing.another_thing3}}</td>
