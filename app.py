@@ -43,6 +43,23 @@ def delete_thing(your_column):
     return redirect(url_for('dashboard'))
 
 
+@app.route('/<int:your_column>/edit_thing', methods=["GET", "POST"])
+def edit_thing(your_column):
+    variable = Your_Table.query.filter_by(your_column=your_column).first()
+
+    if request.method == "POST":
+        thing = request.form['thing']
+
+        if not thing:
+            flash("Please, fill out all fields")
+        else:
+            Your_Table.query.filter_by(your_column=your_column).update({'your_column':thing})
+            db.session.commit()
+            return redirect(url_for('dashboard'))
+
+    return render_template("edit_thing.html", things=variable)
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

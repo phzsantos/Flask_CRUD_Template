@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<h1>Edit thing</h1>
+<hr>
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
+<form action="{{url_for('edit_thing', your_column=things.your_column)}}" method="POST" class="form-control">
+    <label for="thing">Thing</label>
+    <input type="number" class="form-control" id="thing" name="thing" value="{{things.your_column}}" required>
+    <button class="btn btn-success">Edit</button>
+</form>
+{% endblock %}
