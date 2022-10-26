@@ -35,6 +35,14 @@ def add_thing():
     return render_template('add_thing.html')
 
 
+@app.route('/<int:your_column>/delete_thing')
+def delete_thing(your_column):
+    variable = Your_Table.query.filter_by(your_column=your_column).first()
+    db.session.delete(variable)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

@@ -29,7 +29,7 @@
                 <td style="text-align: center;">{{thing.another_thing5}}</td>
                 <td style="text-align: center;">
                     <a href="" class="btn btn-secondary btn-xs">Edit</a>
-                    <a href="" onclick="return confirm('Do you really want to delete this thing?')" class="btn btn-danger btn-xs">Delete</a>
+                    <a href="{{thing.your_column}}/delete_thing" onclick="return confirm('Do you really want to delete this thing?')" class="btn btn-danger btn-xs">Delete</a>
                 </td>
             </tr>
         {% endfor %}
